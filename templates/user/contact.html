@@ -1,0 +1,77 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<!doctype html>
+<html lang="en" class="h-100">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Hugo 0.88.1">
+        <title>Home</title>
+
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/checkout/">
+
+        <!-- Bootstrap core CSS -->
+        <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <style>
+            .bd-placeholder-img {font-size: 1.125rem;
+                                 text-anchor: middle;
+                                 -webkit-user-select: none;
+                                 -moz-user-select: none;
+                                 user-select: none;}
+
+            @media (min-width: 768px) {.bd-placeholder-img-lg {font-size: 3.5rem;}}
+
+            h1, p {text-align: center;}
+        </style>
+
+    
+        <!-- Custom styles for this template -->
+        <link href="cover.css" rel="stylesheet">
+        <link href="form-validation.css" rel="stylesheet">
+    </head>
+    <body class="d-flex h-100 text-left text-dark bg-light">  
+        <div class="cover-container d-flex w-100 h-80 p-3 mx-auto flex-column">
+            <main class="px-3">
+                <h1>Contact me</h1>
+                <p>If you have any questions, please feel free to send it to me</p>
+
+                <form id="contact_form" name="contact_form" action="{%url 'contact'%}" method="POST">
+                    {%csrf_token%}
+
+                    <div class="col-sm-6">
+                        <label class="form-label">Your Name</label>
+                        <input type="text" name="name" class="form-control" placeholder="Name">
+                    </div><br />
+
+                    <div class="col-sm-6">
+                        <label class="form-label">Your Email</label>
+                        <input type="text" id="email" name="email" class="form-control" placeholder="you@example.com">
+                    </div><br />
+
+                    <div class="col-sm-6">
+                        <label class="form-label">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-control">
+                    </div><br />
+
+                    <div class="col-sm-6">
+                        <label class="form-label">Your Message</label>
+                        <br />
+                        <textarea type="text" id="message" name="message" rows="5" cols="50"></textarea>
+                    </div><br />
+                </form>
+                <button class="btn btn-lg btn-secondary fw-bold border-dark text-dark bg-white" type="submit" onclick="document.getElementById('contact_form').submit();">Send</button>
+            </main>
+        </div>
+    </body>
+    <!--Copyrights:
+        Otto, M. J. T. (n.d.). Bootstrap. Bootstrap. Retrieved May 22, 2022, from
+        https://getbootstrap.com/
+    -->
+</html>
+{% endblock %}
