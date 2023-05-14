@@ -1,0 +1,1 @@
+K-Means is an unsupervised learning algorithm used to group data points into K clusters. The algorithm works by iteratively assigning each data point to the nearest cluster centroid and recalculating the centroid of each cluster.

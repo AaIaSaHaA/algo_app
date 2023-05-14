@@ -1,0 +1,1 @@
+Reinforcement learning is a type of machine learning algorithm that learns by interacting with an environment. The algorithm receives feedback in the form of rewards or penalties and learns to make decisions that maximize the total reward.

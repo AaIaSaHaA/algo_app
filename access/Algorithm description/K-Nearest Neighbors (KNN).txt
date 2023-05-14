@@ -1,0 +1,1 @@
+KNN is a non-parametric algorithm used for classification and regression tasks. The algorithm assigns an unknown data point to the class that is most common among its K nearest neighbors in the feature space.

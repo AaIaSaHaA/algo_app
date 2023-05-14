@@ -1,0 +1,1 @@
+SVM is a popular machine learning algorithm used for classification and regression tasks. It works by finding the hyperplane that best separates the data points of different classes in the feature space.

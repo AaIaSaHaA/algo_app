@@ -1,0 +1,1 @@
+Naive Bayes is a probabilistic algorithm that uses Bayes' theorem to make predictions. It's a simple and fast algorithm that works well for large datasets. Naive Bayes assumes that the features are independent of each other, which is not always true in practice.

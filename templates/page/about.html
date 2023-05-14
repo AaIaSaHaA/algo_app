@@ -38,17 +38,17 @@
     <body class="d-flex h-100 text-center text-dark bg-light">  
         <div class="cover-container d-flex w-100 h-80 p-3 mx-auto flex-column">
             <main class="px-3">
-                <h1>Bright Knowledge</h1>
-                <p class="lead">Here you can access the notes that your teacher will leave for you to see simply. If your teacher added a note, it will appear in <a href="{% url 'note' %}"><b>Class Notes</b></a> page, so that you can check it.</p><br /><br />
+                <h1>ALGO</h1>
+                <p class="lead">ALGO is an AI expert system for learning the algorithms through a game. If you want to try this game, you can find it in <a href="{% url 'note' %}"><b>Game</b></a> page, Don't miss it!</p><br /><br />
 
-                <h4 class="fst-italic">Teachers' Contact Information:</h4><br />
+                <h4 class="fst-italic">Developers' Contact Information:</h4><br />
                 {% for x in post.all %}
                     <div class="col-md-6">
                         <div class="position-sticky" style="top: 2rem;">
-                            <div class="p-4 mb-3 bg-secondary text-white rounded">
-                                <h5 class="mb-0">Teacher's Name: {{x.Name}}</h5>
-                                <h5 class="mb-0">Teacher's E-mail: <a href="#">{{x.Email}}</a></h5>
-                                <h5 class="mb-0">Teacher's Phone number: <a href="#">{{x.Phonenumber}}</a></h5>
+                            <div style="background-color: #B9A0B9;" class="p-4 mb-3 text-white rounded">
+                                <h5 class="mb-0">Developer's Name: {{x.Name}}</h5>
+                                <h5 class="mb-0">Developer's E-mail: <a href="#">{{x.Email}}</a></h5>
+                                <h5 class="mb-0">Developer's Phone number: <a href="#">{{x.Phonenumber}}</a></h5>
                                 <br />
                             </div>
                         </div>

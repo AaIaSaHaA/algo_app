@@ -1,0 +1,1 @@
+Recurrent neural networks (RNNs) are a type of neural network that can process sequential data by using feedback connections. They are widely used in natural language processing, speech recognition, and other applications that involve sequential data.

@@ -1,0 +1,1 @@
+Convolutional neural networks (CNNs) are a type of neural network used for image recognition and other computer vision tasks. They use convolutional layers to learn features from images and pooling layers to reduce the dimensionality of the feature maps.

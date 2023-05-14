@@ -1,0 +1,1 @@
+LSTMs are a type of recurrent neural network that can process sequential data by maintaining an internal state or memory. They are widely used in natural language processing, speech recognition, and other applications that involve sequential data.

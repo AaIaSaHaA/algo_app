@@ -1,0 +1,1 @@
+GANs are a type of neural network used for generative modeling tasks. They consist of two networks, a generator network that generates new samples and a discriminator network that tries to distinguish between the generated samples and real samples.

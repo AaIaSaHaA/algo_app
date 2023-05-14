@@ -1,0 +1,1 @@
+Logistic regression is a classification algorithm used to predict the probability of a binary outcome. It uses a logistic function to model the relationship between the input variables and the output variable.

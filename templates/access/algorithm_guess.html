@@ -1,0 +1,264 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Algorithm Guesser</title>
+</head>
+
+<style>
+    .pp {font-family: "Lucida Console", Monaco, monospace;
+       font-size: 25px;
+       letter-spacing: 0px;
+       word-spacing: 0px;
+       color: #000000;
+       font-weight: 400;
+       text-decoration: none solid rgb(68, 68, 68);
+       font-style: normal;
+       font-variant: normal;
+       text-transform: none;}
+
+    .submit-button {align-items: center;
+                    background-color: #7E4084;
+                    border: 2px solid #111;
+                    border-radius: 8px;
+                    box-sizing: border-box;
+                    color: #ffff;
+                    cursor: pointer;
+                    display: flex;
+                    font-family: Inter, sans-serif;
+                    font-size: 16px;
+                    height: 48px;
+                    justify-content: center;
+                    line-height: 24px;
+                    max-width: 13%;
+                    padding: 0 25px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    -webkit-user-select: none;
+                    touch-action: manipulation;}
+
+    .submit-button:hover {outline: none;}
+
+    .submit-button:active {background-color: #ffdeda;
+                           outline: none;}
+
+    .submit-button::after {background-color: #111;
+                           border-radius: 8px;
+                           content: "";
+                           display: block;
+                           height: 48px;
+                           left: 0;
+                           width: 100%;
+                           position: absolute;
+                           top: -2px;
+                           transform: translate(8px, 8px);
+                           transition: transform .2s ease-out;
+                           z-index: -1;}
+
+    .submit-button:hover::after {transform: translate(0, 0);}
+
+    @media (min-width: 768px) {.submit-button {padding: 0 40px;}}
+
+</style>
+<body>
+    <h1>Algorithm Guesser</h1>
+    <form id="qform" action="{% url 'algorithm_guess' %}" method="POST">
+        {% csrf_token %}
+        <fieldset>
+            <div id="ml">
+                <p class="pp">Is it a Machine Learning algorithm?</p>
+                <input type="radio" name="ml" value="1" onclick="clickmly()"> Yes<br>
+                <input type="radio" name="ml" value="0" onclick="clickmln()"> No<br>
+            </div>
+
+            <div id="dt" style="display: none;">
+                <p class="pp">Does it split the data into smaller subsets based on certain criteria?</p>
+                <input type="radio" name="dt" value="1" onclick="clickdt()"> Yes<br>
+                <input type="radio" name="dt" value="0" onclick="clickdt()"> No<br>
+            </div>
+
+            <div id="rf" style="display: none;">
+                <p class="pp">Does it combine multiple decision trees to make predictions?</p>
+                <input type="radio" name="rf" value="1" onclick="clickrf()"> Yes<br>
+                <input type="radio" name="rf" value="0" onclick="clickrf()"> No<br>
+            </div>
+
+            <div id="svm" style="display: none;">
+                <p class="pp">Does it find the optimal hyperplane that separates the data into different classes?</p>
+                <input type="radio" name="svm" value="1" onclick="clicksvm()"> Yes<br>
+                <input type="radio" name="svm" value="0" onclick="clicksvm()"> No<br>
+            </div>
+                
+            <div id="linear" style="display: none;">
+                <p class="pp">Does it fit a line to a set of data points to make predictions?</p>
+                <input type="radio" name="linear" value="1" onclick="clicklinear()"> Yes<br>
+                <input type="radio" name="linear" value="0" onclick="clicklinear()"> No<br>
+            </div>
+                
+            <div id="logistic" style="display: none;">
+                <p class="pp">Does it use a sigmoid function to map the output to the range [0,1]?</p>
+                <input type="radio" name="logistic" value="1" onclick="clicklogistic()"> Yes<br>
+                <input type="radio" name="logistic" value="0" onclick="clicklogistic()"> No<br>
+            </div>
+                
+            <div id="rein" style="display: none;">
+                <p class="pp">Does it learn from experience through a system of rewards and punishments?</p>
+                <input type="radio" name="rein" value="1" onclick="clickrein()"> Yes<br>
+                <input type="radio" name="rein" value="0" onclick="clickrein()"> No<br>
+            </div>
+                
+            <div id="knn" style="display: none;">
+                <p class="pp">Does it classify data points based on their proximity to other data points?</p>
+                <input type="radio" name="knn" value="1" onclick="clickknn()"> Yes<br>
+                <input type="radio" name="knn" value="0" onclick="clickknn()"> No<br>
+            </div>
+
+            <!-- DL Part --> 
+            <div id="dl" style="display: none;">
+                <p class="pp">Is it a Deep Learning algorithm?</p>
+                <input type="radio" name="dl" value="1" onclick="clickdly()"> Yes<br>
+                <input type="radio" name="dl" value="0" onclick="clickdln()"> No<br>
+            </div>
+
+            <div id="rnn" style="display: none;">
+                <p class="pp">Does it use a hidden state to represent the network's memory?</p>
+                <input type="radio" name="rnn" value="1" onclick="clickrnn()"> Yes<br>
+                <input type="radio" name="rnn" value="0" onclick="clickrnn()"> No<br>
+            </div>
+
+            <div id="lstm" style="display: none;">
+                <p class="pp">Does it have a cell state that can store information over long periods of time?</p>
+                <input type="radio" name="lstm" value="1" onclick="clicklstm()"> Yes<br>
+                <input type="radio" name="lstm" value="0" onclick="clicklstm()"> No<br>
+            </div>
+
+            <div id="trans" style="display: none;">
+                <p class="pp">Does it use self-attention to model dependencies between input and output sequences?</p>
+                <input type="radio" name="trans" value="1" onclick="clicktrans()"> Yes<br>
+                <input type="radio" name="trans" value="0" onclick="clicktrans()"> No<br>
+            </div>
+
+            <div id="gan" style="display: none;">
+                <p class="pp">Does it use two neural networks, a generator and a discriminator, to learn a generative model of the data?</p>
+                <input type="radio" name="gan" value="1" onclick="clickgan()"> Yes<br>
+                <input type="radio" name="gan" value="0" onclick="clickgan()"> No<br>
+            </div>
+
+            <div id="cnn" style="display: none;">
+                <p class="pp">Does it commonly used in image or video processing?</p>
+                <input type="radio" name="cnn" value="1" onclick="clickcnn()"> Yes<br>
+                <input type="radio" name="cnn" value="0" onclick="clickcnn()"> No<br>
+            </div>
+
+            <br>
+            <button id="msg" class="submit-button" type="submit" style="display: none;" onclick="document.getElementById('qform').submit();">submit</button>
+            <br>
+        </fieldset>
+
+    </form>
+</body>
+<script>
+    var ml = document.getElementById("ml");
+    var dt = document.getElementById("dt");
+    var rf = document.getElementById("rf");
+    var svm = document.getElementById("svm");
+    var linear = document.getElementById("linear");
+    var logistic = document.getElementById("logistic");
+    var rein = document.getElementById("rein");
+    var knn = document.getElementById("knn");
+    
+    var dl = document.getElementById("dl");
+    var rnn = document.getElementById("rnn");
+    var lstm = document.getElementById("lstm");
+    var trans = document.getElementById("trans");
+    var gan = document.getElementById("gan");
+    var cnn = document.getElementById("cnn");
+
+    var msg = document.getElementById("msg");
+
+    function clickmly() {
+        ml.style.display = "none";
+        dt.style.display = "block";
+    }
+
+    function clickmln() {
+        ml.style.display = "none";
+        dl.style.display = "block";
+    }
+
+    function clickdly() {
+        dl.style.display = "none";
+        rnn.style.display = "block";
+    }
+
+    function clickdln() {
+        window.location.href = "{% url 'error' %}";
+    }
+
+    function clickdt() {
+        dt.style.display = "none";
+        rf.style.display = "block";
+    }
+
+    function clickrf() {
+        rf.style.display = "none";
+        svm.style.display = "block";
+    }
+
+    function clicksvm() {
+        svm.style.display = "none";
+        linear.style.display = "block";
+    }
+
+    function clicklinear() {
+        linear.style.display = "none";
+        logistic.style.display = "block";
+    }
+
+    function clicklogistic() {
+        logistic.style.display = "none";
+        rein.style.display = "block";
+    }
+
+    function clickrein() {
+        rein.style.display = "none";
+        knn.style.display = "block";
+    }
+
+    function clickknn() {
+        knn.style.display = "none";
+        msg.style.display = "block";
+    }
+
+    function clickrnn() {
+        rnn.style.display = "none";
+        lstm.style.display = "block";
+    }
+
+    function clicklstm() {
+        lstm.style.display = "none";
+        trans.style.display = "block";
+    }
+
+    function clicktrans() {
+        trans.style.display = "none";
+        gan.style.display = "block";
+    }
+
+    function clickgan() {
+        gan.style.display = "none";
+        cnn.style.display = "block";
+    }
+
+    function clickcnn() {
+        cnn.style.display = "none";
+        msg.style.display = "block";
+    }
+
+</script>
+</html>
+{% endblock %}

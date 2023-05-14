@@ -18,6 +18,50 @@
                                  -webkit-user-select: none;
                                  -moz-user-select: none;
                                  user-select: none;}
+            .linkbutton {align-items: center;
+                         background-color: #7E4084;
+                         border: 2px solid #111;
+                         border-radius: 8px;
+                         box-sizing: border-box;
+                         color: #ffff;
+                         cursor: pointer;
+                         display: flex;
+                         font-family: Inter,sans-serif;
+                         font-size: 25px;
+                         height: 48px;
+                         justify-content: center;
+                         line-height: 24px;
+                         max-width: 25%;
+                         padding: 0 25px;
+                         position: relative;
+                         text-align: center;
+                         text-decoration: none;
+                         user-select: none;
+                         -webkit-user-select: none;
+                         touch-action: manipulation;
+                         margin: auto;}
+
+            .linkbutton:after {background-color: #111;
+                               border-radius: 8px;
+                               content: "";
+                               display: block;
+                               height: 48px;
+                               left: 0;
+                               width: 100%;
+                               position: absolute;
+                               top: -2px;
+                               transform: translate(8px, 8px);
+                               transition: transform .2s ease-out;
+                               z-index: -1;}
+
+            .linkbutton:hover:after {transform: translate(0, 0);}
+
+            .linkbutton:active {background-color: #ffdeda;
+                                outline: 0;}
+
+            .linkbutton:hover {outline: 0;}
+
+            @media (min-width: 768px) {.linkbutton {padding: 0 40px;}}
 
             @media (min-width: 768px) {.bd-placeholder-img-lg {font-size: 3.5rem;}}
 
@@ -31,25 +75,16 @@
 
     <body class="d-flex h-100 text-left text-dark bg-light">
         <div class="cover-container d-flex w-100 h-80 p-3 mx-auto flex-column">
-            <form id="quizform" name="quizform" method="POST" action="{%url 'note'%}">
-                {%csrf_token%}
-                              
-                {% for x in post.all %}
-                
-                <h1> {{x.Subject}} </h1>
-
-                <div class="col-sm-6">
-                    <label> <b>Title: {{x.Lesson}}</b> </label> <br /><br />
-                    <label class="form-label"> {{x.Note1}} </label><br />
-                    <label class="form-label"> {{x.Note2}} </label><br />
-                    <label class="form-label"> {{x.Note3}} </label><br />
-                    <label class="form-label"> {{x.Note4}} </label><br />
-                    <label class="form-label"> {{x.Note5}} </label>
-                </div>
-
-                {% endfor %}
-                
-            </form>
+            <h1>ALGO Game</h1>
+            <div style="text-align:center;">
+                <br><br><h3>You will have multiple questions on the algorithm you are thinking of, answer the questions and see if ALGO guessed the algorithm right: </h3><br><br>
+            </div>
+            <div style="text-align:center;">
+                <a href="{% url 'algorithm_guess' %}" class="linkbutton">Let's Start!</a>
+            </div>
+            <div style="text-align:center;">
+                <br><br><br><br>
+            </div>
         </div>
     </body>
     <!--Copyrights:

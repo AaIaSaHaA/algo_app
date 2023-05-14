@@ -1,0 +1,112 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<!doctype html>
+<html lang="en" class="h-100">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Hugo 0.88.1">
+        <title>Home</title>
+
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/checkout/">
+
+        <!-- Bootstrap core CSS -->
+        <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <style>
+            .bd-placeholder-img {font-size: 1.125rem;
+                                 text-anchor: middle;
+                                 -webkit-user-select: none;
+                                 -moz-user-select: none;
+                                 user-select: none;}
+            .linkbutton {align-items: center;
+                         background-color: #7E4084;
+                         border: 2px solid #111;
+                         border-radius: 8px;
+                         box-sizing: border-box;
+                         color: #ffff;
+                         cursor: pointer;
+                         display: flex;
+                         font-family: Inter,sans-serif;
+                         font-size: 16px;
+                         height: 48px;
+                         justify-content: center;
+                         line-height: 24px;
+                         max-width: 20%;
+                         padding: 0 25px;
+                         position: relative;
+                         text-align: center;
+                         text-decoration: none;
+                         user-select: none;
+                         -webkit-user-select: none;
+                         touch-action: manipulation;
+                         margin-left: 420px}
+
+            .linkbutton:after {background-color: #111;
+                               border-radius: 8px;
+                               content: "";
+                               display: block;
+                               height: 48px;
+                               left: 0;
+                               width: 100%;
+                               position: absolute;
+                               top: -2px;
+                               transform: translate(8px, 8px);
+                               transition: transform .2s ease-out;
+                               z-index: -1;}
+
+            .linkbutton:hover:after {transform: translate(0, 0);}
+
+            .linkbutton:active {background-color: #ffdeda;
+                                outline: 0;}
+
+            .linkbutton:hover {outline: 0;}
+
+            @media (min-width: 768px) {.linkbutton {padding: 0 40px;}}
+
+            @media (min-width: 768px) {.bd-placeholder-img-lg {font-size: 3.5rem;}}
+
+            h1 {text-align: center;}
+
+            .qp {font-family: "Lucida Console", Monaco, monospace;
+                 font-size: 25px;
+                 letter-spacing: 0px;
+                 word-spacing: 0px;
+                 color: #000000;
+                 font-weight: 400;
+                 text-align: center;
+                 text-decoration: none solid rgb(68, 68, 68);
+                 font-style: normal;
+                 font-variant: normal;
+                 text-transform: none;}
+        </style>
+
+    
+        <!-- Custom styles for this template -->
+        <link href="cover.css" rel="stylesheet">
+        <link href="form-validation.css" rel="stylesheet">
+    </head>
+    <body class="d-flex h-100 text-left text-dark bg-light">  
+        <div class="cover-container d-flex w-100 h-80 p-3 mx-auto flex-column">
+            <main class="px-3">
+                <h1>ALGO Game</h1>
+                    <br>
+                    <p class="qp">Your answers are not enough to guess the algorithm</p>
+                    <p class="qp">Please try again and make sure to answer correctly</p>
+                    <div style="text-align:center;">
+                        <a href="{% url 'note' %}" class="linkbutton">Play again!</a>
+                    </div>
+            </main>
+        </div>
+    </body>
+    <!--Copyrights:
+        Otto, M. J. T. (n.d.). Bootstrap. Bootstrap. Retrieved May 22, 2022, from
+        https://getbootstrap.com/
+    -->
+</html>
+{% endblock %}

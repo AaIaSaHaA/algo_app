@@ -1,0 +1,1 @@
+Linear regression is a simple and widely used algorithm used to predict a continuous output variable based on one or more input variables. It assumes a linear relationship between the input and output variables.

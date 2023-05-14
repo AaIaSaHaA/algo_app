@@ -1,0 +1,93 @@
+{% extends 'basenohf.html'%}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {font-family: Arial, Helvetica, sans-serif;
+                  background-color: #111;
+                  background-repeat: no-repeat;
+                  background-size: cover;}
+
+            .main {width: 940px;
+                   border: 2px solid;
+                   background-color: 111;
+                   border-color: 111;
+                   color: white;
+                   align-items: center;
+                   margin: 20px auto 20px auto;
+                   padding: 50px 20px 50px 20px;}
+
+            .title {width: 940px;
+                    background-color: none;
+                    margin: 0px auto 20px auto;
+                    padding: 50px 20px 50px 20px;
+                    text-align: center;}
+            
+            .linkbutton {align-items: center;
+                         background-image: linear-gradient(to right,#834088, #973559, #C82B44);
+                         border: 2px solid #111;
+                         border-radius: 8px;
+                         box-sizing: border-box;
+                         color: #111;
+                         cursor: pointer;
+                         display: flex;
+                         font-family: Inter,sans-serif;
+                         font-size: 25px;
+                         height: 48px;
+                         justify-content: center;
+                         line-height: 24px;
+                         max-width: 50%;
+                         padding: 0 25px;
+                         position: relative;
+                         text-align: center;
+                         text-decoration: none;
+                         user-select: none;
+                         -webkit-user-select: none;
+                         touch-action: manipulation;
+                         display: flex;
+                         justify-content: center;
+                         align-items: center;
+                         margin-left: 225px;}
+
+            .linkbutton:after {background-color: #111;
+                               border-radius: 8px;
+                               content: "";
+                               display: block;
+                               height: 48px;
+                               left: 0;
+                               width: 100%;
+                               position: absolute;
+                               top: -2px;
+                               transform: translate(8px, 8px);
+                               transition: transform .2s ease-out;
+                               z-index: -1;}
+
+            .linkbutton:hover:after {transform: translate(0, 0);}
+
+            .linkbutton:active {background-color: linear-gradient(#834088, #973559, #C82B44);
+                                outline: 0;}
+
+            .linkbutton:hover {outline: 0;}
+
+            @media (min-width: 768px) {.linkbutton {padding: 0 40px;}}
+        </style>
+    </head>
+    <body>  
+        <div>
+            <div class="title">
+                <img src="{% static 'page\image\logo_full.png' %}" width="826" height="274" alt="logo">
+                <h3></h3>
+            </div>
+            <div class="main">
+                <h2>Welcome to ALGO ...</h2>
+                <div style="text-align:center;">
+                    <a href="{% url 'home' %}" class="linkbutton">Let's Start!</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+{% endblock %}

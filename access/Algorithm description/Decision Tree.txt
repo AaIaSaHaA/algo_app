@@ -1,0 +1,1 @@
+A decision tree is a flowchart-like structure that models decisions and their possible consequences. It's a popular machine learning algorithm used for classification and regression tasks, where the goal is to create a model that predicts an outcome based on several input variables.

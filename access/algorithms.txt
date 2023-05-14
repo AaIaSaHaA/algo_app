@@ -1,0 +1,12 @@
+Decision Tree
+Random Forest
+Support Vector Machine (SVM)
+Linear Regression
+Logistic Regression
+Recurrent Neural Networks (RNN)
+Long Short-Term Memory (LSTM)
+Transformer
+Reinforcement Learning
+Generative Adversarial Networks (GAN)
+Convolutional Neural Networks (CNN)
+K-Nearest Neighbors (KNN)
