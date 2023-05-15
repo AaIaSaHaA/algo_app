@@ -69,7 +69,13 @@
     <form id="qform" action="{% url 'algorithm_guess' %}" method="POST">
         {% csrf_token %}
         <fieldset>
-            <div id="ml">
+            <div id="uname" class="col-sm-6">
+                <p class="pp">Your Name</p>
+                <input type="text" name="name" class="form-control" placeholder="Name"> <br />
+                <input type="button" value="Next" id="next" class="submit-button" onclick="clickname()">
+            </div>
+
+            <div id="ml" style="display: none;">
                 <p class="pp">Is it a Machine Learning algorithm?</p>
                 <input type="radio" name="ml" value="1" onclick="clickmly()"> Yes<br>
                 <input type="radio" name="ml" value="0" onclick="clickmln()"> No<br>
@@ -162,6 +168,8 @@
     </form>
 </body>
 <script>
+    var uname = document.getElementById("uname");
+
     var ml = document.getElementById("ml");
     var dt = document.getElementById("dt");
     var rf = document.getElementById("rf");
@@ -180,6 +188,11 @@
 
     var msg = document.getElementById("msg");
 
+    function clickname() {
+        uname.style.display = "none";
+        ml.style.display = "block";
+    }
+    
     function clickmly() {
         ml.style.display = "none";
         dt.style.display = "block";
@@ -196,7 +209,9 @@
     }
 
     function clickdln() {
-        window.location.href = "{% url 'error' %}";
+        dl.style.display = "none";
+        msg.style.display = "block";
+        
     }
 
     function clickdt() {

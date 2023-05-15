@@ -46,6 +46,7 @@ def note(request):
 def algorithm_guess(request):
     preprocess()
     if request.method == 'POST':
+        name = request.POST.get('name')
         ml = request.POST.get('ml')
         dl = request.POST.get('dl')
         dt = request.POST.get('dt')
@@ -76,24 +77,37 @@ def algorithm_guess(request):
         gan = gan if gan is not None else '0'
         cnn = cnn if cnn is not None else '0'
 
-        #Send the data to DB (models)
-        v_game = Game(ml=ml, dt=dt, rf=rf, svm=svm, linear=linear, logistic=logistic, rein=rein, knn=knn, dl=dl, rnn=rnn, lstm=lstm, trans=trans, gan=gan, cnn=cnn)
-        v_game.save()
+        if name == '':
+            name = 'No Name'
+
         if ml == '1':
             algorithm = identify_algorithm(ml, dt, rf, svm, linear, logistic, rein, knn)
+
         elif ml == '0':
             if dl == '1':
-                algorithm = identify_algorithm(dl, rnn, lstm, trans, gan, cnn)
+                algorithm = identify_algorithm(dl, rnn, lstm, trans, gan, cnn)               
             else:
-                algorithm = None
+                algorithm = 'None'
+                 #Send the data to DB (models)
+                v_game = Game(name=name, guessed_algorethm=algorithm, ml=ml, dt=dt, rf=rf, svm=svm, linear=linear, logistic=logistic, rein=rein, knn=knn, dl=dl, rnn=rnn, lstm=lstm, trans=trans, gan=gan, cnn=cnn)
+                v_game.save()
+                return render(request, 'access/error.html')
         else:
             algorithm = None
-        
+            
         if algorithm is not None:
             algorithm_details = get_details(algorithm)
+
+            #Send the data to DB (models)
+            v_game = Game(name=name, guessed_algorethm=algorithm, ml=ml, dt=dt, rf=rf, svm=svm, linear=linear, logistic=logistic, rein=rein, knn=knn, dl=dl, rnn=rnn, lstm=lstm, trans=trans, gan=gan, cnn=cnn)
+            v_game.save()
+
             return render(request, 'access/result.html', {'algorithm': algorithm, 'algorithm_details': algorithm_details})
         else:
-            algorithm_details = get_details(algorithm)
+            algorithm = 'None'
+            #Send the data to DB (models)
+            v_game = Game(name=name, guessed_algorethm=algorithm, ml=ml, dt=dt, rf=rf, svm=svm, linear=linear, logistic=logistic, rein=rein, knn=knn, dl=dl, rnn=rnn, lstm=lstm, trans=trans, gan=gan, cnn=cnn)
+            v_game.save()
             return render(request, 'access/error.html')
     
     return render(request, 'access/algorithm_guess.html')
